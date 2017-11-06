@@ -1,2 +1,9 @@
-<h1>Welcome to Spork!</h1>
-<p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+<h1>Welcome!</h1>
+
+You are currently: <strong>
+  <% if user_signed_in? %>
+    LOGGED IN
+  <% else %>
+    LOGGED OUT
+  <% end %>
+</strong>

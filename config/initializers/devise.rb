@@ -1,6 +1,11 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
+  config.warden do |manager|
+    manager.default_strategies(:scope => :user).unshift :two_factor_authenticatable
+    manager.default_strategies(:scope => :user).unshift :two_factor_backupable
+  end
+
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
@@ -252,9 +257,9 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 
-  if Rails.application.secrets.facebook_app_id.present? && Rails.application.secrets.facebook_app_secret.present? then (config.omniauth :facebook, Rails.application.secrets.facebook_app_id, Rails.application.secrets.facebook_app_secret, scope: 'email,user_posts') end 
+  if Rails.application.secrets.facebook_app_id.present? && Rails.application.secrets.facebook_app_secret.present? then (config.omniauth :facebook, Rails.application.secrets.facebook_app_id, Rails.application.secrets.facebook_app_secret, scope: 'email,user_posts') end
 
-    if Rails.application.secrets.twitter_app_id.present? && Rails.application.secrets.twitter_app_secret.present? then (config.omniauth :twitter, Rails.application.secrets.twitter_app_id, Rails.application.secrets.twitter_app_secret) end 
+    if Rails.application.secrets.twitter_app_id.present? && Rails.application.secrets.twitter_app_secret.present? then (config.omniauth :twitter, Rails.application.secrets.twitter_app_id, Rails.application.secrets.twitter_app_secret) end
 
     if Rails.application.secrets.github_app_id.present? && Rails.application.secrets.github_app_secret.present? then (config.omniauth :github, Rails.application.secrets.github_app_id, Rails.application.secrets.github_app_secret) end
   # ==> Warden configuration

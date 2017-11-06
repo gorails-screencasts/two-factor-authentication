@@ -8,8 +8,8 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# Use pg as the database for Active Record
+gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
@@ -67,3 +67,6 @@ gem 'foreman', '~> 0.84.0'
 gem 'omniauth-facebook', '~> 4.0'
 gem 'omniauth-twitter', '~> 1.4'
 gem 'omniauth-github', '~> 1.3'
+
+gem 'devise-two-factor'
+gem 'rqrcode'
